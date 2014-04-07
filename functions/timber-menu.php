@@ -84,6 +84,7 @@ class TimberMenu extends TimberCore {
         $menu = array();
         _wp_menu_item_classes_by_context($items);
         foreach($items as $item) {
+            $item->classes = apply_filters('timber_menu_css_class', $item->classes, $item);
             $index[$item->ID] = new $this->MenuItemClass($item);
         }
         foreach($index as $item) {
